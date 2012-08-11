@@ -10,7 +10,12 @@ map ^H X
 map \e[3~ x
 set hlsearch
 set autoindent
+set smartindent
 let c_comment_strings=1
+" set visualbell
+
+
+
 
 " ---------- No default terminal width
 set tw=0
@@ -24,13 +29,15 @@ set cindent
 
 " ---------- Colours
 set background=dark
-"color candycode
-"color rdark 
-"color xoria256 
-"color wombat 
+set t_Co=256    " terminal colours
+" color candycode
+" color rdark 
+" color xoria256 
+" color wombat 
 color wombat256 
-"color manuscript 
-"color railscasts
+" color wombat256mod 
+" color manuscript 
+" color railscasts
 
 
 " ---------- Fonts
@@ -48,7 +55,7 @@ set gfn=Terminus\ 12
 
 " ---------- Folding & numbering
 "foldingalicious
-set fdc=5
+" set fdc=5
 " or manual
 "set fdm=indent
 set fdm=indent
@@ -76,6 +83,16 @@ noremap  k gk
 noremap  j gj
 noremap <UP> gk
 noremap <DOWN>  gj
+" Turn off arrow keys (handy to force you to use hjkl)
+" nnoremap <Left> :echoe "Use h"<CR>
+" nnoremap <Right> :echoe "Use l"<CR>
+" nnoremap <Up> :echoe "Use k"<CR>
+" nnoremap <Down> :echoe "Use j"<CR>"
+" inoremap <up> <nop>
+" inoremap <down> <nop>
+" inoremap <left> <nop>
+" inoremap <right> <nop>
+
 
 
 " Color for xiterm, rxvt, nxterm, color-xterm :
@@ -102,8 +119,19 @@ au BufWinEnter * if expand("%") != "" | silent loadview | endif
 
 " -------- Control-F11 toggles menubar display
 nmap <C-F11> :if &guioptions=~'m' \| set guioptions-=m \| else \| set guioptions+=m \| endif
-set guioptions-=T
-set guioptions-=m
+set guioptions+=T   " if showing toolbar, include tearoff items 
+set guioptions-=T   " no toolbar
+set guioptions-=M   " Don't even load the menu, must be set before syntax/filetype on.
+set guioptions-=m   " no menu
+set guioptions-=r   " no RHS scrollbar
+set guioptions=aA  " cancel e for ascii tabs and apply modeful select for X copying
+set guioptions+=l   " an LHS scrollbar, like rxvt
+set guioptions+=L   " an LHS scrollbar with window split
+set guioptions+=h  " a bottom scrollbar only the size of the current line (less CPU pain)
+" Change colour of statusline in insert mode
+au InsertEnter * hi StatusLine ctermbg=DarkBlue
+au InsertLeave * hi StatusLine ctermfg=Black ctermbg=White
+
 
 " --------- Soft tabs, 4 wide.
 set tabstop=4
@@ -164,3 +192,14 @@ runtime! plugin/matchit.vim
 "if has('gui_running')
 "	color rdark
 "endif
+
+" Thanks to https://github.com/krisleech/vimfiles/blob/master/vimrc
+" Ignore some binary, versioning and backup files when auto-completing
+set wildignore=.svn,CVS,.git,*.swp,*.jpg,*.png,*.gif,*.pdf,*.bak
+" Set a lower priority for .old files
+set suffixes+=.old
+
+
+" When vimrc, either directly or via symlink, is edited, automatically reload it
+autocmd! bufwritepost .vimrc source %
+autocmd! bufwritepost vimrc source %
