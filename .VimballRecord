@@ -1,0 +1,1 @@
+tcomment.vba: call delete('/home/extremetomato/.vim/doc/tcomment.txt')|call delete('/home/extremetomato/.vim/plugin/tcomment.vim')|call delete('/home/extremetomato/.vim/autoload/tcomment.vim')

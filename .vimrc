@@ -109,12 +109,12 @@ set guioptions-=m
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set expandtab
 let g:haskell_indent_if = 2  "Special rules for haskell indenting
 
 " -------- highlightalicious
 syntax on
-"set filetype indent on
-"set filetype plugin on
+filetype indent plugin on  "filetype specific indents and plugins on
 
 " --------- chdir into the current buffer's pwd.
 "set autochdir
@@ -137,7 +137,7 @@ autocmd FileType sh setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
 "" Lisp
 autocmd Filetype lisp,scheme setlocal equalprg=~/.vim/bin/lispindent.lisp expandtab shiftwidth=2 tabstop=8 softtabstop=2
 "" Ruby
-autocmd FileType ruby,yaml setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType ruby,yaml setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 ai 
 "" PHP
 autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 "" X?HTML & XML
@@ -151,9 +151,13 @@ autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabsto
 
 
 
-
+" Nicer indent and editing behaviour, esp. in comments
 set formatoptions+=rcj
 
+
+
+" Load matchit (% to bounce from do to end, etc.)
+runtime! plugin/matchit.vim
 
 
 
