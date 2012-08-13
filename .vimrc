@@ -152,7 +152,8 @@ autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabsto
 
 
 " Nicer indent and editing behaviour, esp. in comments
-set formatoptions+=rcj
+" set formatoptions+=rcj
+set formatoptions+=rc
 
 
 
