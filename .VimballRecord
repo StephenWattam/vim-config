@@ -1,1 +1,2 @@
 tcomment.vba: call delete('/home/extremetomato/.vim/doc/tcomment.txt')|call delete('/home/extremetomato/.vim/plugin/tcomment.vim')|call delete('/home/extremetomato/.vim/autoload/tcomment.vim')
+LargeFile.vba: call delete('/home/extremetomato/.vim/plugin/LargeFile.vim')|call delete('/home/extremetomato/.vim/doc/LargeFile.txt')
