@@ -206,6 +206,11 @@ autocmd! bufwritepost .vimrc source %
 autocmd! bufwritepost vimrc source %
 
 
+" Move to first nonblank char, rather than first char
+noremap <expr> <silent> <Home> col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
+imap <silent> <Home> <C-O><Home>
+
+
 
 " ======================= Status Line ==============================================
 set statusline=%f       "tail of the filename
