@@ -42,12 +42,12 @@ color wombat256
 
 " ---------- Fonts
 "set gfn=Neep\ Alt\ 8
-"set gfn=ProggyCleanTT\ 12
 "set gfn=CodingFontTobi\ 12
 "set gfn=PixelCarnageMonoTT\ 12
 "set gfn=AR\ PL\ Ukai\ HK\ 11
 "set gfn=Terminus\ 8
-set gfn=Terminus\ 12
+" set gfn=Terminus\ 12
+set gfn=ProggyCleanTT\ 12
 "set gfn=Terminus\ 14
 "set gfn=ProFont\ 9
 "set gfn=Fixed\ 12
@@ -204,3 +204,30 @@ set suffixes+=.old
 " When vimrc, either directly or via symlink, is edited, automatically reload it
 autocmd! bufwritepost .vimrc source %
 autocmd! bufwritepost vimrc source %
+
+
+
+" ======================= Status Line ==============================================
+set statusline=%f       "tail of the filename
+set statusline+=\ [%{strlen(&fenc)?&fenc:'none'}, "file encoding
+set statusline+=%{&ff}] "file format
+set statusline+=%y      "filetype
+set statusline+=%h      "help file flag
+set statusline+=%r      "read only flag
+set statusline+=%m      "modified flag
+
+set statusline+=%=      "left/right separator
+set statusline+=%o,       "Number of byte under cursor
+set statusline+=%c,      "cursor column
+set statusline+=%l/%L   "cursor line/total lines
+set statusline+=\ (%P)    "percent through file
+
+
+" first, enable status line always
+set laststatus=2
+" now set it up to change the status line based on mode
+if version >= 700
+  " These colours are taken from wombat256 and won't necessarily look good with other themes
+  au InsertEnter * hi StatusLine	ctermfg=7		ctermbg=238		cterm=none		guifg=#444444	guibg=#f6f3e8	gui=italic
+  au InsertLeave * hi StatusLine	ctermfg=7		ctermbg=238		cterm=none		guifg=#f6f3e8	guibg=#444444	gui=italic
+endif
