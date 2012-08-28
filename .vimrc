@@ -227,7 +227,6 @@ set statusline+=\ (%P)    "percent through file
 set laststatus=2
 " now set it up to change the status line based on mode
 if version >= 700
-  " These colours are taken from wombat256 and won't necessarily look good with other themes
-  au InsertEnter * hi StatusLine	ctermfg=7		ctermbg=238		cterm=none		guifg=#444444	guibg=#f6f3e8	gui=italic
-  au InsertLeave * hi StatusLine	ctermfg=7		ctermbg=238		cterm=none		guifg=#f6f3e8	guibg=#444444	gui=italic
+  au InsertEnter * hi StatusLine	gui=reverse
+  au InsertLeave * hi StatusLine	gui=none
 endif
