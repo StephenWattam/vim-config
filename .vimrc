@@ -236,24 +236,29 @@ autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabsto
 " =====================================================================================
 " Turn on a persistent status line and configure it to display pertinent information
 " about the current file
-
-set statusline=%f                                       "tail of the filename
-set statusline+=\ [%{strlen(&fenc)?&fenc:'none'},       "file encoding
-set statusline+=%{&ff}]                                 "file format
-set statusline+=%y                                      "filetype
-set statusline+=%h                                      "help file flag
-set statusline+=%r                                      "read only flag
-set statusline+=%m                                      "modified flag
-"
-set statusline+=%=                                      "left/right separator
-set statusline+=%o,                                     "Number of byte under cursor
-set statusline+=%c,                                     "cursor column
-set statusline+=%l/%L                                   "cursor line/total lines
-set statusline+=\ (%P)                                  "percent through file
-
-
 " 2 is "always displayed", rather than only when windowed
 set laststatus=2
+
+if has("statusline")
+    set statusline=%f                                       "tail of the filename
+    set statusline+=\ [
+    if has("multi_byte")
+        set statusline+=%{&enc}:%{strlen(&fenc)?&fenc:&enc},       "vim encoding//file encoding
+        set statusline+=%{(&bomb\ !=\ 0)?'bom,':''}             " FIXME: Does the file have a byte order marker?
+    end
+    set statusline+=%{&ff}]                                 "file format
+    set statusline+=%y                                      "filetype
+    set statusline+=%h                                      "help file flag
+    set statusline+=%r                                      "read only flag
+    set statusline+=%m                                      "modified flag
+    "
+    set statusline+=%=                                      "left/right separator
+    "
+    set statusline+=%o,                                     "Number of byte under cursor
+    set statusline+=%c/%{(&tw\ ==\ 0)?'-':&tw},             "cursor column/text width
+    set statusline+=%l/%L                                   "cursor line/total lines
+    set statusline+=\ (%P)                                  "percent through file
+endif
 
 " Invert colours when in insert mode.  Makes it possible
 " to instantly recognise mode even when on the console
@@ -295,9 +300,20 @@ autocmd! bufwritepost .vimrc source %
 autocmd! bufwritepost vimrc source %
 
 
+" Set encoding to UTF-8 by default (if supported in vim)
+if has("multi_byte")
+    " Save the current value of encoding as the terminal encoding
+    if &termencoding == ""
+        let &termencoding = &encoding
+    endif
 
-
-
+    set encoding=utf-8                      " Set vim to use utf8
+    setglobal fileencoding=utf-8            " Set default new file to utf8
+    "set bomb                               " Use a byte order marker when saving?
+                                            " only necessary if using UCS, UTF16, UTF32
+                                            " for utf-8, this is left off.
+    set fileencodings=ucs-bom,utf-8,default,latin1  " Consider these encodings in order when opening unicode files.
+endif
 
 " =====================================================================================
 " Local Modifications
