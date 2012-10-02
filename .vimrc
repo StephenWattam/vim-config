@@ -69,13 +69,13 @@ set mouse=a
 
 " Color for xiterm, rxvt, nxterm, color-xterm :
 if has("terminfo")
-set t_Co=8
-set t_Sf=\e[3%p1%dm
-set t_Sb=\e[4%p1%dm
+    set t_Co=8
+    set t_Sf=\e[3%p1%dm
+    set t_Sb=\e[4%p1%dm
 else
-set t_Co=8
-set t_Sf=\e[3%dm
-set t_Sb=\e[4%dm
+    set t_Co=8
+    set t_Sf=\e[3%dm
+    set t_Sb=\e[4%dm
 endif
 
 
@@ -107,8 +107,7 @@ set gfn=ProggyCleanTT\ 12
 " =====================================================================================
 " Colour Schemes
 " =====================================================================================
-set background=dark
-set t_Co=256    " terminal colours
+set background=dark " default fallback
 " color candycode
 " color rdark 
 " color xoria256 
