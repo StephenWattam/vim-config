@@ -10,8 +10,8 @@ map ^H X
 map \e[3~ x
 set hlsearch
 " set visualbell
-
-
+set cursorline  " Highlight line at cursor
+" set cursorcolumn
 
 
 
@@ -205,26 +205,28 @@ filetype indent plugin on
 
 " Then override per filetype with style guide defaults
 "Vimscript
-autocmd FileType vim setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
-"" Shell
-autocmd FileType sh setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
-"" Lisp
-autocmd Filetype lisp,scheme setlocal equalprg=~/.vim/bin/lispindent.lisp expandtab shiftwidth=2 tabstop=8 softtabstop=2
-"" Ruby
-autocmd FileType ruby,yaml setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 ai 
-"" PHP
-autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
-"" X?HTML & XML
-autocmd FileType html,xhtml,xml setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-"" CSS
-autocmd FileType css setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
-"" JavaScript
-"" autocmd BufRead,BufNewFile *.json setfiletype javascript
-autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-"let javascript_enable_domhtmlcss=1
+if has("autocmd")
+    autocmd FileType vim setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
+    "" Shell
+    autocmd FileType sh setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
+    "" Lisp
+    autocmd Filetype lisp,scheme setlocal equalprg=~/.vim/bin/lispindent.lisp expandtab shiftwidth=2 tabstop=8 softtabstop=2
+    "" Ruby
+    autocmd FileType ruby,yaml setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 ai 
+    "" PHP
+    autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
+    "" X?HTML & XML
+    autocmd FileType html,xhtml,xml setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+    "" CSS
+    autocmd FileType css setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
+    "" JavaScript
+    "" autocmd BufRead,BufNewFile *.json setfiletype javascript
+    autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+    "let javascript_enable_domhtmlcss=1
 
-" Arduino filetype setting
-autocmd! BufNewFile,BufRead *.pde,*.ino setlocal ft=arduino
+    " Arduino filetype setting
+    autocmd! BufNewFile,BufRead *.pde,*.ino setlocal ft=arduino
+endif
 
 
 
@@ -276,9 +278,18 @@ endif
 " Load matchit (% to bounce from do to end, etc.)
 runtime! plugin/matchit.vim
 
-
-
-
+" TList on the right hand side
+let Tlist_Use_Right_Window = 1
+" Single click to go to tag, rather than double
+" let Tlist_Use_SingleClick = 1
+" Exit if only the tag list shows
+let Tlist_Exit_OnlyWindow = 1
+" Compact layout
+let Tlist_Compact_Format = 1
+" Hide the fold gutter
+let Tlist_Enable_Fold_Column = 0
+" Show when toggled
+let Tlist_GainFocus_On_ToggleOpen = 1
 
 " =====================================================================================
 " File Handling 
@@ -292,8 +303,10 @@ set suffixes+=.old
 
 
 " When vimrc, either directly or via symlink, is edited, automatically reload it
-autocmd! bufwritepost .vimrc source %
-autocmd! bufwritepost vimrc source %
+if has("autocmd")
+    autocmd! bufwritepost .vimrc source %
+    autocmd! bufwritepost vimrc source %
+endif
 
 
 " Set encoding to UTF-8 by default (if supported in vim)
