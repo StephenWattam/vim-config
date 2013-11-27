@@ -10,7 +10,7 @@ map ^H X
 map \e[3~ x
 set hlsearch
 " set visualbell
-set cursorline  " Highlight line at cursor
+" set cursorline  " Highlight line at cursor
 " set cursorcolumn
 
 
@@ -226,6 +226,8 @@ if has("autocmd")
 
     " Arduino filetype setting
     autocmd! BufNewFile,BufRead *.pde,*.ino setlocal ft=arduino
+    " Markdown, not modula2
+    autocmd! BufNewFile,BufRead *.md,*.markdown setlocal ft=markdown
 endif
 
 
@@ -279,17 +281,17 @@ endif
 runtime! plugin/matchit.vim
 
 " TList on the right hand side
-let Tlist_Use_Right_Window = 1
+ " let Tlist_Use_Right_Window = 1
 " Single click to go to tag, rather than double
 " let Tlist_Use_SingleClick = 1
 " Exit if only the tag list shows
-let Tlist_Exit_OnlyWindow = 1
+ " let Tlist_Exit_OnlyWindow = 1
 " Compact layout
-let Tlist_Compact_Format = 1
+ " let Tlist_Compact_Format = 1
 " Hide the fold gutter
-let Tlist_Enable_Fold_Column = 0
+ " let Tlist_Enable_Fold_Column = 0
 " Show when toggled
-let Tlist_GainFocus_On_ToggleOpen = 1
+ " let Tlist_GainFocus_On_ToggleOpen = 1
 
 " =====================================================================================
 " File Handling 
