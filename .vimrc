@@ -79,8 +79,8 @@ else
 endif
 
 " Disable incredibly annoying balloons from ruby.vim
-set noballooneval
-setlocal balloonexpr=
+" set noballooneval
+" setlocal balloonexpr=
 " set balloondelay=100000
 
 
