@@ -198,6 +198,9 @@ set shiftwidth=4
 set expandtab
 let g:haskell_indent_if = 2  "Special rules for haskell indenting
 
+" For TeX files, assume full LaTeX highlighting
+let g:tex_flavor='latex'
+
 
 " Turn filetype specific indent plugins on
 filetype indent plugin on  
@@ -228,6 +231,8 @@ if has("autocmd")
     autocmd! BufNewFile,BufRead *.pde,*.ino setlocal ft=arduino
     " Markdown, not modula2
     autocmd! BufNewFile,BufRead *.md,*.markdown setlocal ft=markdown
+    " TemplateTagger2 html
+    autocmd! BufNewFile,BufRead *.tt setlocal ft=tt2html
 endif
 
 
@@ -281,17 +286,32 @@ endif
 runtime! plugin/matchit.vim
 
 " TList on the right hand side
- " let Tlist_Use_Right_Window = 1
+let Tlist_Use_Right_Window = 1
 " Single click to go to tag, rather than double
-" let Tlist_Use_SingleClick = 1
+"let Tlist_Use_SingleClick = 1
 " Exit if only the tag list shows
- " let Tlist_Exit_OnlyWindow = 1
+let Tlist_Exit_OnlyWindow = 1
 " Compact layout
- " let Tlist_Compact_Format = 1
+let Tlist_Compact_Format = 1
 " Hide the fold gutter
- " let Tlist_Enable_Fold_Column = 0
+let Tlist_Enable_Fold_Column = 0
 " Show when toggled
- " let Tlist_GainFocus_On_ToggleOpen = 1
+let Tlist_GainFocus_On_ToggleOpen = 1
+" Open automagically
+let Tlist_Auto_Open = 1
+" Show only the current file.
+let Tlist_Show_One_File = 0
+" Display prototypes rather than tags
+" let Tlist_Display_Prototype = 1
+" Open files with closed folds
+let Tlist_File_Fold_Auto_Close = 1
+" Show fold gutter?
+" let Tlist_Enable_Fold_Column = 1
+" Don't show scope, it's useless for most languages
+let Tlist_Display_Tag_Scope = 0
+
+" Add a key binding to open the list
+nmap <F8> :TlistUpdate<CR>:TlistToggle<CR>
 
 " =====================================================================================
 " File Handling 
@@ -325,6 +345,13 @@ if has("multi_byte")
                                             " for utf-8, this is left off.
     set fileencodings=ucs-bom,utf-8,default,latin1  " Consider these encodings in order when opening unicode files.
 endif
+
+" Enable perltidy for perl
+"command -range=% -nargs=* Perltidy <line1>,<line2>!
+"    \perltidy -ce -l=120 <args>
+
+
+
 
 " =====================================================================================
 " Local Modifications
