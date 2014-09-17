@@ -78,8 +78,10 @@ else
     set t_Sb=\e[4%dm
 endif
 
-
-
+" Disable incredibly annoying balloons from ruby.vim
+set noballooneval
+setlocal balloonexpr=
+" set balloondelay=100000
 
 
 
@@ -172,7 +174,10 @@ noremap <DOWN>  gj
 " inoremap <right> <nop>
 
 
-
+" Enable omnicompletion and bind to ^O
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+inoremap <C-O> <C-X><C-O>
 
 
 
@@ -206,6 +211,7 @@ let g:tex_flavor='latex'
 filetype indent plugin on  
 
 
+
 " Then override per filetype with style guide defaults
 "Vimscript
 if has("autocmd")
@@ -216,6 +222,7 @@ if has("autocmd")
     autocmd Filetype lisp,scheme setlocal equalprg=~/.vim/bin/lispindent.lisp expandtab shiftwidth=2 tabstop=8 softtabstop=2
     "" Ruby
     autocmd FileType ruby,yaml setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 ai 
+    autocmd FileType ruby,eruby set noballooneval
     "" PHP
     autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
     "" X?HTML & XML
