@@ -175,9 +175,9 @@ noremap <DOWN>  gj
 
 
 " Enable omnicompletion and bind to ^O
-filetype plugin on
-set omnifunc=syntaxcomplete#Complete
-inoremap <C-O> <C-X><C-O>
+"filetype plugin on
+"set omnifunc=syntaxcomplete#Complete
+"inoremap <C-O> <C-X><C-O>
 
 
 
