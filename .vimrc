@@ -292,33 +292,8 @@ endif
 " Load matchit (% to bounce from do to end, etc.)
 runtime! plugin/matchit.vim
 
-" TList on the right hand side
-let Tlist_Use_Right_Window = 1
-" Single click to go to tag, rather than double
-"let Tlist_Use_SingleClick = 1
-" Exit if only the tag list shows
-let Tlist_Exit_OnlyWindow = 1
-" Compact layout
-let Tlist_Compact_Format = 1
-" Hide the fold gutter
-let Tlist_Enable_Fold_Column = 0
-" Show when toggled
-let Tlist_GainFocus_On_ToggleOpen = 1
-" Open automagically
-let Tlist_Auto_Open = 1
-" Show only the current file.
-let Tlist_Show_One_File = 0
-" Display prototypes rather than tags
-" let Tlist_Display_Prototype = 1
-" Open files with closed folds
-let Tlist_File_Fold_Auto_Close = 1
-" Show fold gutter?
-" let Tlist_Enable_Fold_Column = 1
-" Don't show scope, it's useless for most languages
-let Tlist_Display_Tag_Scope = 0
 
-" Add a key binding to open the list
-nmap <F8> :TlistUpdate<CR>:TlistToggle<CR>
+
 
 " =====================================================================================
 " File Handling 
