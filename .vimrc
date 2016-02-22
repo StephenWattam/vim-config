@@ -95,12 +95,9 @@ endif
 "set gfn=Terminus\ 8
 "set gfn=Terminus\ 12
 " set gfn=ProggyCleanTT\ 12
-"set gfn=Terminus\ 14
-"set gfn=ProFont\ 9
-"set gfn=Fixed\ 12
-"set gfn=Numbus\ Mono\ L\ 12
+"set gfn=ProggyCleanTT\ 12
+" set gfn=Crisp\ 12
 set gfn=Inconsolata\ 12
-
 
 
 
@@ -240,6 +237,8 @@ if has("autocmd")
     autocmd! BufNewFile,BufRead *.md,*.markdown setlocal ft=markdown
     " TemplateTagger2 html
     autocmd! BufNewFile,BufRead *.tt setlocal ft=tt2html
+    " Rust
+    au BufRead,BufNewFile *.rs setfiletype rust
 endif
 
 
