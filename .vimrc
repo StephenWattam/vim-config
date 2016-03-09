@@ -238,7 +238,7 @@ if has("autocmd")
     " TemplateTagger2 html
     autocmd! BufNewFile,BufRead *.tt setlocal ft=tt2html
     " Rust
-    au BufRead,BufNewFile *.rs setfiletype rust
+    au BufRead,BufNewFile *.rs setlocal ft=rust
 endif
 
 
