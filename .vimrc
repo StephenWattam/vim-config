@@ -94,7 +94,8 @@ endif
 "set gfn=AR\ PL\ Ukai\ HK\ 11
 "set gfn=Terminus\ 8
 "set gfn=Terminus\ 12
-set gfn=ProggyCleanTT\ 12
+set gfn=Inconsolata\ 12
+" set gfn=ProggyCleanTT\ 12
 "set gfn=Terminus\ 14
 "set gfn=ProFont\ 9
 "set gfn=Fixed\ 12
