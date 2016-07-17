@@ -12,7 +12,7 @@ set hlsearch
 " set visualbell
 " set cursorline  " Highlight line at cursor
 " set cursorcolumn
-
+set spelllang=en_gb
 
 
 
@@ -100,9 +100,6 @@ set gfn=Inconsolata\ 12
 "set gfn=ProFont\ 9
 "set gfn=Fixed\ 12
 "set gfn=Numbus\ Mono\ L\ 12
-
-
-
 
 
 
@@ -241,6 +238,8 @@ if has("autocmd")
     autocmd! BufNewFile,BufRead *.md,*.markdown setlocal ft=markdown
     " TemplateTagger2 html
     autocmd! BufNewFile,BufRead *.tt setlocal ft=tt2html
+    " Rust
+    au BufRead,BufNewFile *.rs setlocal ft=rust
 endif
 
 
