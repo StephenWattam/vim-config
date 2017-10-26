@@ -1,0 +1,6 @@
+[submodule "pack/git-plugins/start/ale"]
+	path = pack/git-plugins/start/ale
+	url = https://github.com/w0rp/ale.git
+[submodule "pack/git-plugins/start/vim-toml"]
+	path = pack/git-plugins/start/vim-toml
+	url = git@github.com:cespare/vim-toml.git

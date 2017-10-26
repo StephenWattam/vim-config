@@ -8,9 +8,10 @@ set uc=0
 set t_kD=^?
 map ^H X
 map \e[3~ x
+set nowarn
 set hlsearch
 " set visualbell
-" set cursorline  " Highlight line at cursor
+set cursorline  " Highlight line at cursor
 " set cursorcolumn
 set spelllang=en_gb
 
@@ -231,6 +232,8 @@ if has("autocmd")
     "" autocmd BufRead,BufNewFile *.json setfiletype javascript
     autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
     "let javascript_enable_domhtmlcss=1
+    "" Java
+    autocmd FileType java setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 tw=120 colorcolumn=+0
 
     " Arduino filetype setting
     autocmd! BufNewFile,BufRead *.pde,*.ino setlocal ft=arduino
@@ -291,8 +294,6 @@ endif
 
 " Load matchit (% to bounce from do to end, etc.)
 runtime! plugin/matchit.vim
-
-
 
 
 " =====================================================================================
