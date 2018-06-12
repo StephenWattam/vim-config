@@ -295,6 +295,9 @@ endif
 " Load matchit (% to bounce from do to end, etc.)
 runtime! plugin/matchit.vim
 
+" Bind tabularise for first equals
+map tb :Tabularize /\zs[=<>/!]\@<!=[=<>/!]\@!.*/<CR>
+
 
 " =====================================================================================
 " File Handling 
